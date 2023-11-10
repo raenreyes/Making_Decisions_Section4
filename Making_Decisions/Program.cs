@@ -5,10 +5,21 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Please enter your weather in Celsius");
-            string input = Console.ReadLine();  
-            int temp = int.Parse(input);
+            string numberAsString = Console.ReadLine();
+            int temp;
 
-            if(temp < 20)
+            bool success = int.TryParse(numberAsString, out temp);
+            if (success) 
+            {
+                Console.WriteLine("You gave a valid number and the temperature is " + temp + " degrres celsius");
+            }
+            else
+            {
+                temp = 0;
+                Console.WriteLine("Valued entered Invalid and the temperature is set to " + temp);
+            }
+
+            if (temp < 20 )
             {
                 Console.WriteLine("Take the coat");
             }
@@ -18,7 +29,7 @@
             }
             else if (temp > 40)
             {
-                Console.WriteLine("Stay Inside");
+                Console.WriteLine("Stay inside way too hot");
             }
             else
             {
