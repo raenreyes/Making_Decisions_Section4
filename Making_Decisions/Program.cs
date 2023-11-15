@@ -1,49 +1,29 @@
-﻿namespace Making_Decisions
+﻿using System.Runtime.CompilerServices;
+
+namespace Making_Decisions
 {
     internal class Program
     {
+        //global variables are made static so we can access them without creating an instance
+        static int highScore = 80;
+        static string highScorePlayer = "Denis";
         static void Main(string[] args)
         {
-            int age = 17;
-            string userName = "Admin";
-
-
-            CheckAge(age);
-            CheckUserName(userName);
+            CheckScore(100,"MasterDev09");
+            
         }
-
-        public static void CheckAge(int age) {
-            switch (age)
+        public static void CheckScore(int score, string playerName) {
+            //here we are comparing our global varibles to local variables
+            if (score > highScore)
             {
-                case  17:
-                    Console.WriteLine("Too young to party in the club!");
-                    break;
-                case 21:
-                    Console.WriteLine("Good to go!");
-                    break;
-                default:
-                    Console.WriteLine("How old are you then?");
-                    break;
+                Console.WriteLine("The old highscore of " + highScore + 
+                 " was broken with a new score of " + score);
+                Console.WriteLine("New highscore holder is " + playerName);
+            }
+            else {
+                Console.WriteLine("The old highscore of " + highScore +
+                 " could not be broken and is still held by " + highScorePlayer);
             }
         }
-
-        public static void CheckUserName (string userName) {
-
-            switch (userName) {
-                case "Denis":
-                    Console.WriteLine("Hello Employee Denis!");
-                    break;
-                case "Admin":
-                    Console.WriteLine("Hello Admin!");
-                    break;
-                case "Billy":
-                    Console.WriteLine("Hello Employee Billy");
-                    break;
-                    default : 
-                    Console.WriteLine("You are not an employee here!");
-                    break;
-            }
-        }
-        
     }
 }
