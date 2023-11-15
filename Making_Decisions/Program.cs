@@ -8,20 +8,21 @@ namespace Making_Decisions
        
         static void Main(string[] args)
         {
-           
-            int temp = -1;
-            string stateOfMatter;
-            //this is how you can add another expression to a ternary operator
-            stateOfMatter = temp < 0 ? "Solid" : temp > 100 ? "Gas": "Liquid"; 
-            Console.WriteLine($"The state of mater is {stateOfMatter}");
+            Console.WriteLine("Please enter the current temperature outside in Celsius");
+            string tempString = Console.ReadLine();
+            string displayText = string.Empty;
+          
+            bool validNumber = int.TryParse(tempString, out int intTemp);
 
-            temp = 20;
-            stateOfMatter = temp < 0 ? "Solid" : temp > 100 ? "Gas" : "Liquid";
-            Console.WriteLine($"The state of mater is {stateOfMatter}");
-
-            temp = 430;
-            stateOfMatter = temp < 0 ? "Solid" : temp > 100 ? "Gas" : "Liquid";
-            Console.WriteLine($"The state of mater is {stateOfMatter}");
+            if (validNumber)
+            {
+                displayText = intTemp <= 15 ? "too cold": 
+                intTemp >= 16 && intTemp <= 28 ? "Perfect" : "too hot";
+                Console.WriteLine("Your weather is " + displayText);
+            }
+            else {
+                Console.WriteLine("Not a valid temperature!");
+            }
         }
        
         
